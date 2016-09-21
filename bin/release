@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Release a new version of this repository.
+#
+# Assumes bin/prep-release was run and the PR merged.
+#
+# Usage: bin/release
+#
+###
+set -e
+
+python setup.py build
+python setup.py register -r pypi
+python setup.py sdist upload -r pypi
